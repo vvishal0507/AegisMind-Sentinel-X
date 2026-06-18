@@ -1,249 +1,73 @@
-# 🛡️ AegisMind Sentinel X
+# AegisMind Sentinel
 
-## AI Powered Cyber Security Command Center
+AegisMind Sentinel is a FastAPI cyber defense backend with machine learning anomaly detection, Random Forest threat classification, a multi-agent security analysis system, MITRE ATT&CK mapping, threat intelligence enrichment, JWT authentication, SQLite persistence, and real-time WebSocket alert streaming.
 
-![Status](https://img.shields.io/badge/System-Online-success)
-![AI](https://img.shields.io/badge/AI-Threat%20Detection-blue)
-![Security](https://img.shields.io/badge/Cyber-Security-red)
+## Backend Structure
 
----
-
-## 🚀 Overview
-
-AegisMind Sentinel is an AI-powered Cyber Security Command Center designed to help organizations detect, analyze, and respond to potential cyber threats using Artificial Intelligence.
-
-The system continuously analyzes security data, identifies abnormal behavior, calculates risk levels, and provides intelligent recommendations to security analysts.
-
----
-
-# 🎯 Problem Statement
-
-Modern cyber attacks are becoming more complex, while many small organizations cannot afford dedicated Security Operations Center (SOC) teams.
-
-Traditional security systems often depend on predefined rules and fail to detect unknown or evolving threats.
-
-Organizations need an intelligent system that can:
-
-* Monitor security activities continuously
-* Detect abnormal patterns
-* Prioritize threats
-* Provide explainable security insights
-
----
-
-# 💡 Our Solution
-
-AegisMind Sentinel provides an AI-driven security monitoring platform that:
-
-✅ Detects suspicious activities
-✅ Analyzes network behavior
-✅ Predicts threat levels
-✅ Generates risk scores
-✅ Assists human security analysts in decision-making
-
----
-
-# 🤖 Why AI?
-
-Traditional security tools mainly detect known attack patterns.
-
-AegisMind Sentinel uses AI capabilities to identify hidden patterns and unusual behaviors.
-
-AI Technologies:
-
-* Machine Learning Classification
-* Anomaly Detection
-* Risk Prediction
-* AI-Based Threat Analysis
-
----
-
-# 🏗️ System Architecture
-
-```
-Data Sources
-
-(Network Logs)
-(User Activity)
-(Security Events)
-
-        ↓
-
-AI Processing Layer
-
-        ↓
-
-Threat Detection Model
-
-        ↓
-
-Risk Engine
-
-        ↓
-
-Security Dashboard
-
-        ↓
-
-Human Security Analyst
-```
-
----
-
-# ⚙️ Workflow
-
-```
-Collect Security Data
-
-        ↓
-
-Process & Analyze Data
-
-        ↓
-
-AI Detects Abnormal Behavior
-
-        ↓
-
-Generate Risk Score
-
-        ↓
-
-Provide Threat Explanation
-
-        ↓
-
-Human Makes Final Decision
-```
-
----
-
-# ✨ Key Features
-
-## 🔍 AI Threat Detection
-
-Detects unusual activities and possible cyber threats.
-
-## 📊 Risk Assessment
-
-Calculates security risk levels based on detected patterns.
-
-## 🧠 AI Reasoning Engine
-
-Provides explanations about why an activity is suspicious.
-
-## 🚨 Security Alerts
-
-Generates prioritized alerts for analysts.
-
-## 👨‍💻 Human-in-the-Loop Security
-
-AI assists analysts but final critical decisions remain under human control.
-
----
-
-# 🛡️ Responsible AI
-
-## Potential Risk
-
-AI systems may generate false positive alerts.
-
-Example:
-
-Normal user activity could be incorrectly classified as suspicious.
-
-## Our Safety Approach
-
-* Human verification before critical actions
-* Confidence score based threat ranking
-* Explainable AI recommendations
-
----
-
-# 🧰 Technology Stack
-
-## Frontend
-
-* HTML
-* CSS
-* JavaScript
-* React (Future Upgrade)
-
-## Backend
-
-* Python
-* FastAPI
-
-## Artificial Intelligence
-
-* Scikit-learn
-* Machine Learning Models
-* Anomaly Detection Algorithms
-
-## Database
-
-* SQLite / MongoDB
-
----
-
-# 📂 Project Structure
-
-```
-frontend/
+```text
 backend/
-ai-engine/
-dataset/
-docs/
-demo/
+  app.py
+  routes.py
+  ai_engine.py
+  anomaly_detection.py
+  threat_reasoning.py
+  mitre_mapping.py
+  threat_intelligence.py
+  websocket_manager.py
+  llm_security_analyst.py
+  splunk_connector.py
+  fake_logs_generator.py
+  config.py
+  security.py
+  agents/
+  database/
+  data/
+  models/
+  utils/
 ```
 
----
+## Run
 
-# 📸 Screenshots
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn backend.app:app --reload
+```
 
-(Add dashboard screenshots here)
+Open `http://127.0.0.1:8000/docs` for the interactive API documentation.
 
----
+## Authentication
 
-# 🎥 Demo
+Use `POST /auth/token` with:
 
-Demo Video:
+```text
+username: analyst
+password: AegisMind-Analyst-2026
+```
 
-(Add your video link here)
+The endpoint returns a bearer JWT suitable for protected production extensions.
 
----
+## API
 
-# 🌍 Impact
+- `GET /`
+- `GET /threats`
+- `GET /risk-score`
+- `POST /analyze`
+- `POST /predict`
+- `GET /logs`
+- `GET /ai-reasoning`
+- `GET /mitre-mapping`
+- `GET /threat-intelligence`
+- `POST /auth/token`
+- `WS /ws/threats`
 
-AegisMind Sentinel helps organizations:
+## WebSocket Events
 
-* Improve cyber awareness
-* Reduce manual monitoring effort
-* Detect threats faster
-* Support security decision making
+- `NEW_THREAT`
+- `RISK_UPDATE`
+- `AI_ANALYSIS_COMPLETE`
 
----
+## Notes
 
-# 🔮 Future Improvements
-
-Future versions will include:
-
-* Autonomous AI Security Agents
-* Real-time threat intelligence
-* Cloud security monitoring
-* Automated incident response
-
----
-
-# 👨‍💻 Team
-
-Developed for AI Hackathon
-
-Project:
-**AegisMind Sentinel**
-
----
-
-# 📜 License
-
-MIT License
+The default threat intelligence mode uses deterministic local reputation rules. Set `THREAT_INTEL_API_KEY` and `THREAT_INTEL_BASE_URL` to enable an external JSON API connector.

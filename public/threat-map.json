@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    { "id": "SOC", "label": "Command Center", "x": 50, "y": 50, "type": "core", "risk": "low" },
+    { "id": "NA-01", "label": "Network Edge", "x": 18, "y": 32, "type": "sensor", "risk": "high" },
+    { "id": "EDR-07", "label": "Endpoint Cluster", "x": 76, "y": 38, "type": "sensor", "risk": "critical" },
+    { "id": "IAM-02", "label": "Identity Plane", "x": 34, "y": 75, "type": "identity", "risk": "medium" },
+    { "id": "TI-Feed", "label": "Threat Intel", "x": 82, "y": 72, "type": "intel", "risk": "medium" }
+  ],
+  "links": [
+    { "source": "NA-01", "target": "SOC", "intensity": 78 },
+    { "source": "EDR-07", "target": "SOC", "intensity": 92 },
+    { "source": "IAM-02", "target": "SOC", "intensity": 58 },
+    { "source": "TI-Feed", "target": "SOC", "intensity": 66 },
+    { "source": "NA-01", "target": "EDR-07", "intensity": 71 }
+  ]
+}
